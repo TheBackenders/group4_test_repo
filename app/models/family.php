@@ -15,22 +15,37 @@ function __construct(){
     parent::__construct();
 }
 public  function setname($name){
-     $this->name=$name;
+     $this->full_name=$name;
 }
-public  function setemail($email){
-     $this->email=$email;
+public  function setstatus($status){
+    $this->status=$status;
+}
+public  function setphone($phone){
+    $this->phone=$phone;
+}
+public  function setmembers($members){
+     $this->members=$members;
+}
+public  function setphone($phone){
+    $this->phone=$phone;
 }
 public function getname(){
-    return $this->name;
+    return $this->full_name;
 }
- public  function getemail(){
-    return $this->email;
+ public  function getstatus(){
+    return $this->status;
+}
+public function getstatus(){
+    return $this->status;
+}
+public function getphone(){
+    return $this->phone;
 }
 public  function setid($id){
-     $this->id=$id;
+     $this->fam_id=$id;
 }
 public function getid(){
-    return $this->id;
+    return $this->fam_id;
 }
 
 

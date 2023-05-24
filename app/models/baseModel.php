@@ -16,13 +16,13 @@ class baseModel{
         $result=$this->connection->query($query);
         return $result;
     }
-    public function getOne($table_name,$id){
-        $query="SELECT * FROM ".$table_name." WHERE id='".$id."'";
-        $result=$this->connection->query($query);
-        echo "<br>";
-        // var_dump($result);
-        return $result->fetch_object();
-    }
+    // public function getOne($table_name,$id){
+    //     $query="SELECT * FROM ".$table_name." WHERE id='".$id."'";
+    //     $result=$this->connection->query($query);
+    //     echo "<br>";
+    //     // var_dump($result);
+    //     return $result->fetch_object();
+    // }
    
 
 
