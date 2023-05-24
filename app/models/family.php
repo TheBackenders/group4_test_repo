@@ -26,9 +26,7 @@ public  function setphone($phone){
 public  function setmembers($members){
      $this->members=$members;
 }
-public  function setphone($phone){
-    $this->phone=$phone;
-}
+
 public function getname(){
     return $this->full_name;
 }
