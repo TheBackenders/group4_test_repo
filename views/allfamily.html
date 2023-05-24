@@ -20,15 +20,15 @@
         <td>status</td> 
         <td>members</td>  
         <td>phone number</td>      
-        <td>Adress</td>      
+        <!-- <td>Adress</td>       -->
         </tr>
            <tr>
             <?php foreach($arg as $user){?>
-           <td><?php echo $user->full_name;?></td>
-             <td><?php echo $user->status;?></td>
-             <td><?php echo $user->members;?></td>
-             <td><?php echo $user->phone;?></td>
-             <td><?php echo $user->address;?></td>
+           <td><?php echo $user->getname();?></td>
+             <td><?php echo $user->getstatus();?></td>
+             <td><?php echo $user->getmember();?></td>
+             <td><?php echo $user->getphone();?></td>
+             <!-- <td><?php echo $user->getaddress;?></td> -->
              <td > <a href="edituser/<?php echo $user->id;?>">  edit </a>
             <a href="deletuser/<?php echo $user->id;?>">  delete </a> </td>
              

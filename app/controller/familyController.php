@@ -3,37 +3,34 @@
 declare(strict_types=1);
 namespace app\controller;
 require(__DIR__."/baseController.php");
-class UserController extends baseController
+require_once  __DIR__. '/../models/family.php';
+use app\models\Family;
+class FamilyController extends baseController
 {
     public function __construct()
     {
-        $this->creatModel
-        (__DIR__."/../models/user.php","app\models\User");
+    $this->model=new Family();
     }
+
     public function all(){
-        $result= $this->model->all(families,"*");
+
+        $result= $this->model->all('families','*');
          $arg=[];
          while($row=mysqli_fetch_assoc ($result))
          {
-             $this->model->setid((int)$row['id']);
-             $this->model->setname($row['full_name']);
+             $this->model->setid((int)$row['fam_id']);
+             $this->model->setname($row['fullname']);
              $this->model->setstatus($row['status']);
-             $this->model->setmembers($row['members']);
+             $this->model->setmembers($row['member']);
              $this->model->setphone($row['phone']);
              $arg[]=$this->model;
            }
-        $arg=[];
-        $result=$this->model->all("families","*");
-        while ($obj = $result -> fetch_object())
-        {
-               $arg[]=$obj;
-        }
-       $this->loadView("allfamily.html",$arg);
+        $this->loadView("allfamily.html",$arg);
     }
 
 
-
-    public function search_address(){
+/*
+    public function searchuser(){
         $this->loadView("search.html",'');
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             $searchkey=$_POST['searchKey'];
@@ -48,6 +45,7 @@ class UserController extends baseController
         }
     
         }
+*/
         public function addfamily(){
             $this->loadView("addfamily.html",'');
             if ($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -57,11 +55,8 @@ class UserController extends baseController
                 $this->model->setemail($_POST['members']);
                 $this->model->setemail($_POST['phone']);
                 // echo ($this->model->getname());
+                
                 $this->model->adduser('families',$this->model);
-            }
-            else
-            {
-                $this->model->loadView("addfamily",[]);
             }
         }
 
@@ -79,11 +74,14 @@ class UserController extends baseController
             }
             
         }
-      */ /* public function deletfamily($id){
+      */  public function deletfamily($id){
             $this->model->setid((int)$id);
             $this->model->deletfamily($this->model,'families');
-            header("Location:/darbni/newproject/public/"); 
-        }*/
+            header("Location:/darbni/newproject/public/");
+               
+            
+            
+        }
 
 }
 
