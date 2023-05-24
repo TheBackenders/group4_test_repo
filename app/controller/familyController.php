@@ -3,32 +3,29 @@
 declare(strict_types=1);
 namespace app\controller;
 require(__DIR__."/baseController.php");
-class UserController extends baseController
+require_once  __DIR__. '/../models/family.php';
+use app\models\Family;
+class FamilyController extends baseController
 {
     public function __construct()
     {
-        $this->creatModel
-        (__DIR__."/../models/user.php","app\models\User");
+    $this->model=new Family();
     }
+
     public function all(){
-        $result= $this->model->all($table_name,$col);
+
+        $result= $this->model->all('families','*');
          $arg=[];
          while($row=mysqli_fetch_assoc ($result))
          {
-             $this->model->setid((int)$row['id']);
-             $this->model->setname($row['full_name']);
-             $this->model->setemail($row['status']);
-             $this->model->setemail($row['members']);
-             $this->model->setemail($row['phone']);
+             $this->model->setid((int)$row['fam_id']);
+             $this->model->setname($row['fullname']);
+             $this->model->setstatus($row['status']);
+             $this->model->setmembers($row['member']);
+             $this->model->setphone($row['phone']);
              $arg[]=$this->model;
            }
-        $arg=[];
-        $result=$this->model->all("family","*");
-        while ($obj = $result -> fetch_object())
-        {
-               $arg[]=$obj;
-        }
-       $this->loadView("allfamily.html",$arg);
+        $this->loadView("allfamily.html",$arg);
     }
 
 

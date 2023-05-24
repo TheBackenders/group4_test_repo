@@ -1,6 +1,6 @@
 
 RewriteEngine On
-RewriteBase /darbni/newbranch/11/
+RewriteBase /test/group4_test_repo/
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php [L,QSA]
