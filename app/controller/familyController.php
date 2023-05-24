@@ -11,19 +11,19 @@ class UserController extends baseController
         (__DIR__."/../models/user.php","app\models\User");
     }
     public function all(){
-        $result= $this->model->all($table_name,$col);
+        $result= $this->model->all(families,"*");
          $arg=[];
          while($row=mysqli_fetch_assoc ($result))
          {
              $this->model->setid((int)$row['id']);
              $this->model->setname($row['full_name']);
-             $this->model->setemail($row['status']);
-             $this->model->setemail($row['members']);
-             $this->model->setemail($row['phone']);
+             $this->model->setstatus($row['status']);
+             $this->model->setmembers($row['members']);
+             $this->model->setphone($row['phone']);
              $arg[]=$this->model;
            }
         $arg=[];
-        $result=$this->model->all("family","*");
+        $result=$this->model->all("families","*");
         while ($obj = $result -> fetch_object())
         {
                $arg[]=$obj;
@@ -32,8 +32,8 @@ class UserController extends baseController
     }
 
 
-/*
-    public function searchuser(){
+
+    public function search_address(){
         $this->loadView("search.html",'');
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             $searchkey=$_POST['searchKey'];
@@ -48,7 +48,6 @@ class UserController extends baseController
         }
     
         }
-*/
         public function addfamily(){
             $this->loadView("addfamily.html",'');
             if ($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -58,8 +57,11 @@ class UserController extends baseController
                 $this->model->setemail($_POST['members']);
                 $this->model->setemail($_POST['phone']);
                 // echo ($this->model->getname());
-                
                 $this->model->adduser('families',$this->model);
+            }
+            else
+            {
+                $this->model->loadView("addfamily",[]);
             }
         }
 
@@ -77,14 +79,11 @@ class UserController extends baseController
             }
             
         }
-      */  public function deletfamily($id){
+      */ /* public function deletfamily($id){
             $this->model->setid((int)$id);
             $this->model->deletfamily($this->model,'families');
-            header("Location:/darbni/newproject/public/");
-               
-            
-            
-        }
+            header("Location:/darbni/newproject/public/"); 
+        }*/
 
 }
 
