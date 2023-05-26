@@ -10,36 +10,33 @@
 
     <center>
         <form  method="post">
-        <label >Add new Family:</label><br>
-        <label >Father's information:</label><br>
+        <h1>add new family</h1>
         <label >Full Name:</label>
         <input type="text" id="name" name="name" required>
         <br>
-        Status: 
-        Emloyee:
-        <input type="radio" name="emp" value="employee" > 
-        Not Employee:
-        <input type="radio" name="not" value="not_employee" >
-        <br> 
+        <label for="statussel">Choose a status:</label>
+        <select name="status" id="status">
+            <option value="employee">employee</option>
+            <option value="notemployee">not employee</option>
+          </select>
     <br>
-        <label for="email">Number of family members:</label>
+        NumberOfMembers:
         <input type="number" name="num" required>
         <br>
-        <label for="username">Phone number:</label>
+        PhoneNumber:
         <input type="text" name="phone" required>
         <br>
         <label >Address:</label>
-        East rural
-        <input type="radio" name="east" value="east" > 
-        West rural
-        <input type="radio" name="west" value="west" >
-        South rural
-        <input type="radio" name="south" value="south" > 
-        North rural
-        <input type="radio" name="north" value="north" >
+
+        <select name="address" id="address">
+            <option value="city">City</option>
+          <option value="esat">Esat</option>
+          <option value="west">West</option>
+          <option value="south">South</option>
+          <option value="north">North</option>
+        </select>
         <br>
-        <br>
-        <input type="submit" value="add"><br>
+        <input type="submit" value="addfamily"><br>
         </form>
         <a href="<?php echo BASE_PATH;?>"> Go Back Home </a> 
         </center>

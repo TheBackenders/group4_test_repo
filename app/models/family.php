@@ -1,7 +1,8 @@
 <?php 
 declare(strict_types=1);
 namespace app\models;
-require(__DIR__."/baseModel.php");
+
+require_once(__DIR__."/baseModel.php");
 // use app/models/connection;
 class Family extends baseModel{
     public int $fam_id;

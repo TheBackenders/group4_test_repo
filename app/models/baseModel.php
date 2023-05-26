@@ -16,8 +16,38 @@ class baseModel{
         $result=$this->connection->query($query);
         return $result;
     }
+
+    public function insert($table_name,$model){
+        $modelArr=(array)$model;
+        $query="INSERT INTO ".$table_name." (";
+        foreach($modelArr as $col=>$value){
+            if ($col=='connection' )
+            continue;
+            $query=$query.$col.",";
+        }
+       $query= substr($query,0,-1);
+        $query=$query.") VALUES (";
+        foreach($modelArr as $col=>$value){
+            if ($col=='connection')
+            continue;
+            $query=$query."'".$value."',";
+        }
+        $query=substr($query,0,-1);
+        $query=$query.")";
+        echo $query;
+        $result=$this->connection->query($query);
+
+
+    }
+    public function lastId($tablename){
+        $query="SELECT MAX(fam_id) FROM ".$tablename;
+        return $this->connection->query($query);
+
+        
+    }
   
 }
+
 
 
 
