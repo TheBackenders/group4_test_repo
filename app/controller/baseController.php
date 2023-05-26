@@ -1,7 +1,7 @@
 <?php
 namespace app\controller;
 
-class baseController
+class BaseController
 {
     public $model;
     

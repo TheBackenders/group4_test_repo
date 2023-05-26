@@ -1,33 +1,18 @@
 <?php
-
 declare(strict_types=1);
+// use app\controller\BaseController;
 namespace app\controller;
-
 require_once(__DIR__."/baseController.php");
-require_once  __DIR__. '/../models/family.php';
-use app\models\Family;
-class FamilyController extends BaseController
+require_once  __DIR__. '/../models/address.php';
+use app\models\Address;
+class AddressController extends BaseController
 {
     public function __construct()
     {
-    $this->model=new Family();
+    $this->model=new Address();
     }
 
-    public function all(){
-
-        $result= $this->model->all('families','*');
-         $arg=[];
-         while($row=mysqli_fetch_assoc ($result))
-         {
-             $this->model->setid((int)$row['fam_id']);
-             $this->model->setname($row['fullname']);
-             $this->model->setstatus($row['status']);
-             $this->model->setmembers($row['member']);
-             $this->model->setphone($row['phone']);
-             $arg[]=$this->model;
-           }
-        $this->loadView("allfamily.html",$arg);
-    }
+ 
 
 
 /*
@@ -47,19 +32,17 @@ class FamilyController extends BaseController
     
         }
 */
-        public function addfamily(){
-            $this->loadView("addfamily.html",'');
-            if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-                $this->model->setname($_POST['name']);
-                $this->model->setstatus($_POST['status']);
-                $this->model->setmembers($_POST['num']);
-                $this->model->setphone($_POST['phone']);
-                
-                $this->model->insert('families',$this->model);
-               
-               
+        public function add_address(){
 
-                // header("Location:/test/group4_test_repo/");
+            if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+               
+               $lastfamily=$this->model->lastID('families');
+               $familyId=$lastfamily->fetch_assoc()['MAX(fam_id)'];
+               $this->model->set_fam_id($familyId);
+               $this->model->setaddress($_POST['address']);
+               $this->model->insert("address",$this->model);
+
+                header("Location:/test/group4_test_repo/");
             }
         }
 
