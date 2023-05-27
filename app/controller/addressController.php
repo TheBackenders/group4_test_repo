@@ -69,6 +69,17 @@ class AddressController extends BaseController
             
             
     //     }
+    public function edit_address($id){
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+           
+           $this->model->setaddress($_POST['address']);
+           $this->model->update("address",$id, $this->model);
+
+            header("Location:/test/group4_test_repo/");
+        }
+    }
+
 
 }
 

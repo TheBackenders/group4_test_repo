@@ -87,6 +87,23 @@ class FamilyController extends BaseController
             
     //     }
 
+    public function editfamily($id){
+        $this->loadView("editfamily.html",[]);
+        if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $this->model->setname($_POST['name']);
+            $this->model->setstatus($_POST['status']);
+            $this->model->setmembers($_POST['num']);
+            $this->model->setphone($_POST['phone']);
+            
+            $this->model->update('families',$id ,$this->model);
+           
+           
+
+            // header("Location:/test/group4_test_repo/");
+        }
+    }
+
+
 }
 
 

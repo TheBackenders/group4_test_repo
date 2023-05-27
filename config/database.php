@@ -3,7 +3,7 @@ return [
     'host'=>'localhost',
     'username'=>'root',
     'password'=>'',
-    'database'=>'testdb',
+    'database'=>'families_db',
 
 ]
 ;

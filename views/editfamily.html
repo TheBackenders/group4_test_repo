@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <center>
+        <form  method="post">
+        <h1>Update a family</h1>
+        <label >Full Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br>
+        <label for="statussel">Choose a status:</label>
+        <select name="status" id="status">
+            <option value="employee">employee</option>
+            <option value="notemployee">not employee</option>
+          </select>
+    <br>
+        NumberOfMembers:
+        <input type="number" name="num" required>
+        <br>
+        PhoneNumber:
+        <input type="text" name="phone" required>
+        <br>
+        <label >Address:</label>
+
+        <select name="address" id="address">
+            <option value="city">City</option>
+          <option value="esat">Esat</option>
+          <option value="west">West</option>
+          <option value="south">South</option>
+          <option value="north">North</option>
+        </select>
+        <br>
+        <input type="submit" value="addfamily"><br>
+        </form>
+        <a href="<?php echo BASE_PATH;?>"> Go Back Home </a> 
+        </center>
+    
+</body>
+</html>

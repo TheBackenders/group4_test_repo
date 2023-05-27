@@ -45,6 +45,22 @@ class baseModel{
 
         
     }
+
+    public function update($table_name, $id, $model){
+        $modelArr=(array)$model;
+        $query="UPDATE ".$table_name." SET ";
+        foreach($modelArr as $col=>$value){
+            if ($col=='connection' )
+            continue;
+            $query=$query.$col. "=" . $query=$query."'".$value."',";
+        }
+        $query=substr($query,0,-1);
+        $query=$query." WHERE fam_id = " ."'". $id ."'". "";
+        echo $query;
+        $result=$this->connection->query($query);
+
+
+    }
   
 }
 
