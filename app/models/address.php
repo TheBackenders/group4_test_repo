@@ -33,7 +33,14 @@ public function getaddress(){
     return $this->address;
 }
 
-
+public function search($searchkey){
+    $query="SELECT families.fullname,addresses.address FROM addresses
+    LEFT JOIN families 
+    ON families.fam_id=addresses.famid
+    WHERE addresses.address='".$searchkey."'";
+     $result=$this->connection->query($query);
+    return $result;
+}
 
 
 }

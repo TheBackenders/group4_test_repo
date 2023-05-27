@@ -11,14 +11,18 @@ if ($request === BASE_PATH) {
     $fcontroller = new FamilyController();
 
          $fcontroller->all();
-    }
-    elseif ($request === BASE_PATH."addfamily") {  
+}
+elseif ($request === BASE_PATH."addfamily") {  
         $fcontroller = new FamilyController();
         $acontroller = new AddressController();
     
              $fcontroller->addfamily();
              $acontroller->add_address();
-        }
+}
+elseif($request===BASE_PATH."search"){
+          $acontroller = new AddressController();
+          $acontroller->search();
+}
   
    
 
