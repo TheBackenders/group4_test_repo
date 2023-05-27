@@ -15,23 +15,21 @@ class AddressController extends BaseController
  
 
 
-/*
-    public function searchuser(){
+
+    public function search(){
         $this->loadView("search.html",'');
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-            $searchkey=$_POST['searchKey'];
-            $this->model->setname('');
-            $this->model->setemail('');
+            $searchkey=$_POST['addressSearch'];
             $arg=[]; 
-            $result=$this->model->search("users",$searchkey,$this->model);
+            $result=$this->model->search($searchkey);
             while ($obj = $result -> fetch_object()){
                 $arg[]=$obj;
             }
-           $this->loadView("searchres.html",$arg);
+           $this->loadView("searchresult.html",$arg);
         }
     
         }
-*/
+
         public function add_address(){
 
             if ($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -40,7 +38,7 @@ class AddressController extends BaseController
                $familyId=$lastfamily->fetch_assoc()['MAX(fam_id)'];
                $this->model->set_fam_id($familyId);
                $this->model->setaddress($_POST['address']);
-               $this->model->insert("address",$this->model);
+               $this->model->insert("addresses",$this->model);
 
                 header("Location:/test/group4_test_repo/");
             }
