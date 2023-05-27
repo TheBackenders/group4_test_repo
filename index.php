@@ -19,8 +19,9 @@ if ($request === BASE_PATH) {
              $fcontroller->addfamily();
              $acontroller->add_address();
         }
-        elseif ($request === BASE_PATH."editfamily/"){
-          $id = substr($_SERVER['REQUEST_URI'], strlen(BASE_PATH . 'editfamily/'));
+        elseif (strpos($request ,BASE_PATH.'editfamily/')===0){
+          $id = substr($request, strlen(BASE_PATH . 'editfamily/'));
+          echo "ok";
           $fcontroller = new FamilyController();
           $acontroller = new AddressController();
       

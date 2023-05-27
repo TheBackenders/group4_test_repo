@@ -19,12 +19,14 @@ class FamilyController extends BaseController
          $arg=[];
          while($row=mysqli_fetch_assoc ($result))
          {
+            echo "<br>";
              $this->model->setid((int)$row['fam_id']);
              $this->model->setname($row['fullname']);
              $this->model->setstatus($row['status']);
              $this->model->setmembers($row['member']);
              $this->model->setphone($row['phone']);
-             $arg[]=$this->model;
+            //  $arg[]=$this->model;
+            $arg[]=$row;
            }
         $this->loadView("allfamily.html",$arg);
     }

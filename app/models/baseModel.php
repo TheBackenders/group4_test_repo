@@ -52,10 +52,10 @@ class baseModel{
         foreach($modelArr as $col=>$value){
             if ($col=='connection' )
             continue;
-            $query=$query.$col. "=" . $query=$query."'".$value."',";
+            $query=$query.$col. "= '".$value."',";
         }
         $query=substr($query,0,-1);
-        $query=$query." WHERE fam_id = " ."'". $id ."'". "";
+        $query=$query." WHERE fam_id = " . $id . "";
         echo $query;
         $result=$this->connection->query($query);
 
